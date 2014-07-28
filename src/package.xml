@@ -18,6 +18,10 @@
     </types>
     <types>
         <members>*</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
+        <members>*</members>
         <members>Account</members>
         <members>Case</members>
         <members>Contact</members>
