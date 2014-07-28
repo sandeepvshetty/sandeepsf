@@ -1,0 +1,103 @@
+<apex:page standardController="Opportunity" extensions="jquery_minihack">
+    <style>
+        #myTitle {
+            font-size:20px;
+            text-align: center;
+        }
+        
+        .element {
+            width:50%;
+            float:left;
+        }
+        
+        .droppableArea {
+            height:200px;
+            background: #CCC;
+            font-weight:bold;
+        }
+    </style>
+
+    <apex:detail subject="{!theOpp.Id}" relatedList="true"/>
+    <apex:form >
+        <h1 id="myTitle">Drag and Drop Products: Mini-Hack</h1>
+
+            <div style="width:100%;">
+                <div id="draggable1" class="element">
+                    <apex:pageBlock >
+                        <apex:pageBlockButtons >
+                            <apex:commandButton value="Select" action="{!addProduct}" rerender="addProductsSection"/>
+                        </apex:pageBlockButtons>
+
+                        <apex:pageBlockTable var="p" value="{!allProducts}">
+                            <apex:column headerValue="Select" >
+                                <apex:inputCheckbox value="{!p.selected}" />
+                            </apex:column>
+                            <apex:column value="{!p.prod.Name}" />
+                            <apex:column value="{!p.prod.Product2.ProductCode}" />
+                        </apex:pageBlockTable>
+                    </apex:pageBlock>
+                </div>
+
+                <div class="element droppableArea" id="droppableArea1" >
+                    <ul id="searchListUl"></ul>
+                </div>
+
+                <div class="element">
+                    <apex:outputPanel id="addProductsSection">
+                        <apex:outputPanel rendered="{!showResults}">
+                            <apex:pageBlock >
+                                <apex:pageBlockButtons >
+                                    <apex:commandButton value="Add" action="{!createLineItems}" />
+                                </apex:pageBlockButtons>
+                                <apex:pageBlockTable var="p" value="{!selectedProducts}">
+                                    <apex:column headerValue="Product Name" >
+                                        <apex:outputField value="{!p.prod.Name}" />
+                                    </apex:column>
+                                    <apex:column headerValue="Quantity">
+                                        <apex:inputText value="{!p.Quantity}" />
+                                    </apex:column>
+                                    <apex:column headerValue="Sales Price">
+                                        <apex:inputText value="{!p.SalesPrice}" />
+                                    </apex:column>
+                                </apex:pageBlockTable>
+                            </apex:pageBlock>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                </div>
+            </div>
+        </apex:form>
+
+        <apex:includeScript value="{!URLFOR($Resource.jquery,'jquery-1.9.1.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jquery,'jquery-ui-1.10.2.custom.min.js')}"/>
+
+        <script>
+            $(document).ready(function() {
+               
+               //this will hold reference to the tr we have dragged and its helper
+               var c = {};
+               
+               //$("#droppableArea1").droppable();
+               
+               $("#draggable1 tr").draggable({
+                    helper: "clone",
+                    start: function(event, ui) {
+                        c.tr = this;
+                        c.helper = ui.helper;
+                   }
+                });
+                
+                $("#droppableArea1").droppable({
+                    drop: function(event, ui) {
+                        var txt = ui.draggable.text();
+                        alert(ui.draggable.id());
+                        $("#searchListUl").append('<li><a href="#">'+txt+'</a></li>');
+                        
+                        $(c.tr).remove();
+                        $(c.helper).remove();
+                    }
+                });
+               
+            });
+        </script>
+
+</apex:page>

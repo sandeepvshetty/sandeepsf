@@ -6,15 +6,11 @@
     </types>
     <types>
         <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>*</members>
         <name>ApexPage</name>
     </types>
     <types>
         <members>*</members>
-        <name>Queue</name>
+        <name>ApexTrigger</name>
     </types>
     <types>
         <members>*</members>
@@ -22,6 +18,10 @@
         <members>Case</members>
         <members>Contact</members>
         <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Queue</name>
     </types>
     <version>31.0</version>
 </Package>

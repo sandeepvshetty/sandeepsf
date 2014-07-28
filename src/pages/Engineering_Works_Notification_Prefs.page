@@ -1,0 +1,6 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Notification Preferences</h1>
+  Select your notification preference here
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>
