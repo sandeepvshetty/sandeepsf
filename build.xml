@@ -46,12 +46,6 @@
       <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" zipFile="${sf.zipFile}" pollWaitMillis="1000" rollbackOnError="true"/>
     </target>
 
-    <!-- Shows deploying code & running tests for code in directory -->
-    <target name="deployCode">
-      <!-- Upload the contents of the "codepkg" directory, running the tests for just 1 class -->
-      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="src" rollbackOnError="true" />
-    </target>
-
     <!-- Shows removing code; only succeeds if done after deployCode -->
     <target name="undeployCode">
       <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="removecodepkg"/>
@@ -82,5 +76,40 @@
 	<!-- Retrieve the information on all supported metadata type -->
     <target name="describeMetadata">
       <sf:describeMetadata username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}"/>
+    </target>
+    
+    <!-- 
+    <target name="update_email_address_suffixes" depends="retrieve_dev">
+        <echo message="updating email addresses in ${metadata.root}..." />
+        <replaceregexp match="${dev.sf.org.suffix}" replace="${ci.sf.org.suffix}" flags="gs" byline="false">
+            <fileset dir="${metadata.root}" />
+        </replaceregexp>     
+    </target>
+     -->
+     
+    <target name="remove_social_post_from_profiles">
+        <echo message="updating profiles to remove Social-Post references in ${metadata.root}..." />
+        <replaceregexp match="^    &lt;layoutAssignments&gt;\n        &lt;layout&gt;SocialPost-Social Post Layout&lt;/layout&gt;\n    &lt;/layoutAssignments&gt;$" replace="" flags="gm" byline="false">
+            <fileset dir="${metadata.root}\profiles" includes="**/*.profile" />
+        </replaceregexp>
+    </target>
+ 
+    <target name="delete_social_post_files" depends="remove_social_post_from_profiles">
+        <echo message="deleting Social-Post related files from ${metadata.root}..." />
+        <delete file="${metadata.root}\workflows\SocialPost.workflow"/>
+        <delete file="${metadata.root}\layouts\SocialPost-Social Post Layout.layout"/>
+    </target>
+ 	<!--
+    <target name="deploy_ci" depends="delete_social_post_files">
+        <echo message="deploying modified metadata from ${metadata.root}..." />
+        <sf:deploy singlePackage="true" serverurl="${ci.sf.org.serverurl}" password="${ci.sf.org.password}" username="${ci.sf.org.username}" maxPoll="360" pollWaitMillis="20000" logType="Debugonly" rollbackOnError="true" runAllTests="${ci.sf.org.forcetests}" checkOnly="${ci.sf.org.checkonly}" deployroot="${metadata.root}">
+        </sf:deploy>
+    </target>
+    -->
+    
+    <!-- Shows deploying code & running tests for code in directory -->
+    <target name="deployCode" depends="delete_social_post_files">
+      <!-- Upload the contents of the "codepkg" directory, running the tests for just 1 class -->
+      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="src" rollbackOnError="true" />
     </target>
 </project>
