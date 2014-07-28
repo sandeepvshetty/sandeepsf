@@ -18,10 +18,6 @@
     </types>
     <types>
         <members>*</members>
-        <name>StaticResource</name>
-    </types>
-    <types>
-        <members>*</members>
         <members>Account</members>
         <members>Case</members>
         <members>Contact</members>
@@ -30,6 +26,10 @@
     <types>
         <members>*</members>
         <name>Queue</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>StaticResource</name>
     </types>
     <version>31.0</version>
 </Package>
