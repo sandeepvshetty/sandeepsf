@@ -113,7 +113,7 @@
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
-        <fullName>CanAllowPortalSelfReg</fullName>
+        <fullName>CleanStatus</fullName>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
@@ -319,26 +319,4 @@
         <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
-    <webLinks>
-        <fullName>GMI_Show_Map_Button_Contact</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Show Map</masterLabel>
-        <openType>sidebar</openType>
-        <page>GoogleMapsInternationalContact</page>
-        <protected>false</protected>
-    </webLinks>
-    <webLinks>
-        <fullName>GMI_Show_Map_Link_Contact</fullName>
-        <availability>online</availability>
-        <displayType>link</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Show Map</masterLabel>
-        <openType>sidebar</openType>
-        <page>GoogleMapsInternationalContact</page>
-        <protected>false</protected>
-    </webLinks>
 </CustomObject>
