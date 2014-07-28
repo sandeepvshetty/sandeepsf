@@ -10,6 +10,14 @@
     </types>
     <types>
         <members>*</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Queue</name>
+    </types>
+    <types>
+        <members>*</members>
         <members>Account</members>
         <members>Case</members>
         <members>Contact</members>
