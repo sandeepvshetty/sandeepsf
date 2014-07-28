@@ -26,7 +26,6 @@
         <members>Contact</members>
         <members>ContentVersion</members>
         <members>Contract</members>
-        <members>SocialPost</members>
         <members>DandBCompany</members>
         <members>Event</members>
         <members>Global</members>
@@ -39,6 +38,7 @@
         <members>PricebookEntry</members>
         <members>Product2</members>
         <members>SocialPersona</members>
+        <members>SocialPost</members>
         <members>Solution</members>
         <members>Task</members>
         <members>User</members>
