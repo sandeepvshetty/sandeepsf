@@ -337,7 +337,7 @@
         <externalId>false</externalId>
         <label>Number of Locations</label>
         <precision>3</precision>
-        <required>false</required>
+        <required>true</required>
         <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Number</type>
