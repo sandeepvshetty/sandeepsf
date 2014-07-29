@@ -28,7 +28,6 @@
         <members>Contract</members>
         <members>DandBCompany</members>
         <members>Event</members>
-        <members>Global</members>
         <members>Idea</members>
         <members>Lead</members>
         <members>Opportunity</members>
@@ -38,16 +37,13 @@
         <members>PricebookEntry</members>
         <members>Product2</members>
         <members>SocialPersona</members>
-        <members>SocialPost</members>
         <members>Solution</members>
         <members>Task</members>
         <members>User</members>
-        <members>WorkCoaching</members>
         <members>WorkFeedback</members>
         <members>WorkFeedbackQuestion</members>
         <members>WorkFeedbackQuestionSet</members>
         <members>WorkFeedbackRequest</members>
-        <members>WorkGoal</members>
         <members>WorkGoalCollaborator</members>
         <members>WorkGoalLink</members>
         <members>WorkPerformanceCycle</members>
