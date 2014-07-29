@@ -94,9 +94,8 @@
         </replaceregexp>
     </target>
  
-    <target name="delete_social_post_files" depends="remove_social_post_from_profiles">
+    <target name="delete_social_post_files">
         <echo message="deleting Social-Post related files from ${metadata.root}..." />
-        <delete file="${metadata.root}\workflows\SocialPost.workflow"/>
         <delete file="${metadata.root}\layouts\SocialPost-Social Post Layout.layout"/>
     </target>
  	<!--
